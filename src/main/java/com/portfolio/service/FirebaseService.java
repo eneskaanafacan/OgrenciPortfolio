@@ -21,7 +21,17 @@ public class FirebaseService {
     @PostConstruct
     public void initialize() {
         try {
-            FileInputStream serviceAccount = new FileInputStream("firebase-service-account.json");
+            String firebaseConfigJson = System.getenv("FIREBASE_CONFIG_JSON");
+            java.io.InputStream serviceAccount;
+
+            if (firebaseConfigJson != null && !firebaseConfigJson.isEmpty()) {
+                serviceAccount = new java.io.ByteArrayInputStream(
+                        firebaseConfigJson.getBytes(java.nio.charset.StandardCharsets.UTF_8));
+                System.out.println("Using Firebase configuration from environment variable.");
+            } else {
+                serviceAccount = new FileInputStream("firebase-service-account.json");
+                System.out.println("Using Firebase configuration from local file.");
+            }
 
             FirebaseOptions options = FirebaseOptions.builder()
                     .setCredentials(GoogleCredentials.fromStream(serviceAccount))
@@ -33,7 +43,8 @@ public class FirebaseService {
             }
         } catch (IOException e) {
             System.err.println("Firebase initialization failed: " + e.getMessage());
-            System.err.println("Make sure 'firebase-service-account.json' is in the project root.");
+            // Don't crash the app, just log the error
+            e.printStackTrace();
         }
     }
 
