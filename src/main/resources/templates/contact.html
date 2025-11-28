@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: layout(~{::section})}">
+
+<body>
+    <section>
+        <h2 class="mb-4 border-bottom pb-2">İletişim</h2>
+
+        <div class="row">
+            <div class="col-md-6">
+                <p>Benimle iletişime geçmek için aşağıdaki formu doldurabilir veya sosyal medya hesaplarımdan
+                    ulaşabilirsiniz.</p>
+
+                <div class="alert alert-success" th:if="${success}">
+                    Mesajınız başarıyla gönderildi!
+                </div>
+
+                <form th:action="@{/contact}" th:object="${contactMessage}" method="post">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Adınız Soyadınız</label>
+                        <input type="text" class="form-control" id="name" th:field="*{name}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">E-posta Adresiniz</label>
+                        <input type="email" class="form-control" id="email" th:field="*{email}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Mesajınız</label>
+                        <textarea class="form-control" id="message" rows="5" th:field="*{message}" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary"><i class="bi bi-send-fill me-2"></i>Gönder</button>
+                </form>
+            </div>
+            <div class="col-md-6 d-flex align-items-center justify-content-center">
+                <div class="text-center mt-4 mt-md-0">
+                    <i class="bi bi-envelope-paper fs-1 text-primary mb-3"></i>
+                    <h4>Bana Ulaşın</h4>
+                    <p class="text-muted">eneskaanafacan35@gmail.com</p>
+
+                    <div class="mt-5">
+                        <h5 class="mb-3">Beni Sosyal Medyada Takip Edin</h5>
+                        <div class="d-flex justify-content-center gap-3">
+                            <a href="https://www.linkedin.com/in/enes-kaan-afacan-a60b32259/"
+                                class="btn btn-primary btn-lg d-flex align-items-center">
+                                <i class="bi bi-linkedin me-2"></i> LinkedIn
+                            </a>
+                            <a href="https://github.com/eneskaanafacan"
+                                class="btn btn-dark btn-lg d-flex align-items-center">
+                                <i class="bi bi-github me-2"></i> GitHub
+                            </a>
+                            <a href="https://www.instagram.com/eneskaanafacan/"
+                                class="btn btn-danger btn-lg d-flex align-items-center">
+                                <i class="bi bi-instagram me-2"></i> Instagram
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

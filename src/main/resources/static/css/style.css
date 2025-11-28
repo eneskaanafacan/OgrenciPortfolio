@@ -1,0 +1,131 @@
+:root {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --primary-color: #0d6efd;
+    --secondary-color: #6c757d;
+    --card-bg: #1e1e1e;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Glassmorphism Navbar */
+.navbar-dark.bg-dark {
+    background-color: rgba(18, 18, 18, 0.8) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Card & Button Hover Effects (Neon Glow) */
+.card {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border-color: #333;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px rgba(13, 110, 253, 0.5);
+    /* Primary color glow */
+    border-color: var(--primary-color);
+}
+
+.btn {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.btn-primary:hover {
+    box-shadow: 0 0 15px rgba(13, 110, 253, 0.6);
+}
+
+/* Page Transition Animation (Fade In Up) */
+.fade-in {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Navbar Customization */
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.75);
+    transition: color 0.3s ease;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: var(--primary-color);
+    text-shadow: 0 0 5px rgba(13, 110, 253, 0.5);
+}
+
+/* Timeline for CV */
+.timeline {
+    position: relative;
+    padding: 20px 0;
+}
+
+.timeline-item {
+    padding: 20px;
+    border-left: 2px solid var(--primary-color);
+    position: relative;
+    margin-bottom: 20px;
+    background: var(--card-bg);
+    border-radius: 0 4px 4px 0;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: 28px;
+    width: 14px;
+    height: 14px;
+    background: var(--primary-color);
+    border-radius: 50%;
+}
+
+/* Hero Section */
+.hero-section {
+    padding: 100px 0;
+    text-align: center;
+}
+
+.hero-quote {
+    font-style: italic;
+    color: var(--secondary-color);
+    margin-top: 20px;
+}
+
+/* Contrast Fixes for Dark Mode */
+.text-muted {
+    color: #d1d1d1 !important;
+}
+
+.form-control::placeholder {
+    color: #d1d1d1 !important;
+    opacity: 0.7;
+}
+
+.timeline-subtitle,
+.timeline-date {
+    color: #d1d1d1 !important;
+}

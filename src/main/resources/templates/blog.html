@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: layout(~{::section})}">
+
+<body>
+    <section>
+        <h2 class="mb-4 border-bottom pb-2">Blog</h2>
+
+        <div class="row">
+            <div class="col-md-12" th:each="post : ${posts}">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h3 class="card-title h4" th:text="${post.title}">Blog Başlığı</h3>
+                        <p class="text-muted small mb-2">
+                            <i class="bi bi-calendar-event me-1"></i>
+                            <span th:text="${post.date}">Tarih</span>
+                        </p>
+                        <p class="card-text" th:text="${post.summary}">Özet metin...</p>
+                        <details>
+                            <summary class="btn btn-sm btn-outline-primary d-inline-block cursor-pointer">Devamını Oku
+                            </summary>
+                            <div class="mt-3 border-top pt-3" th:utext="${post.content}">
+                                <!-- HTML content from Markdown -->
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

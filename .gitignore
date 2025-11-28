@@ -1,0 +1,11 @@
+target/
+firebase-service-account.json
+.idea/
+.vscode/
+*.iml
+*.log
+.DS_Store
+.classpath
+.project
+.settings/
+HELP.md
